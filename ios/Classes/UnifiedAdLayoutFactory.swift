@@ -8,10 +8,10 @@
 import Foundation
 
 public class UnifiedAdLayoutFactory : NSObject, FlutterPlatformViewFactory {
-    let messeneger: FlutterBinaryMessenger
+    let messenger: FlutterBinaryMessenger
     
-    public init(messeneger: FlutterBinaryMessenger) {
-        self.messeneger = messeneger
+    public init(messenger: FlutterBinaryMessenger) {
+        self.messenger = messenger 
     }
     
     public func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
@@ -19,7 +19,7 @@ public class UnifiedAdLayoutFactory : NSObject, FlutterPlatformViewFactory {
             frame: frame,
             viewId: viewId,
             args: args as? [String : Any] ?? [:],
-            messeneger: messeneger
+            messenger: messenger 
         )
     }
     
