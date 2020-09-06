@@ -95,24 +95,10 @@ extension UnifiedAdLayout : GADUnifiedNativeAdLoaderDelegate {
         (nativeAdView.bodyView as? UILabel)?.text = nativeAd.body
         nativeAdView.bodyView?.isHidden = nativeAd.body == nil
 
-        // call to action
-        (nativeAdView.callToActionView as? UILabel)?.text = nativeAd.callToAction
-        nativeAdView.callToActionView?.isHidden = nativeAd.callToAction == nil
-
-        // In order for the SDK to process touch events properly, user interaction
-        // should be disabled.
-        nativeAdView.callToActionView?.isUserInteractionEnabled = false
-
         // Associate the native ad view with the native ad object. This is
         // required to make the ad clickable.
         // Note: this should always be done after populating the ad views.
         nativeAdView.nativeAd = nativeAd
-        
-
-        //iconView?.image = nativeAd.icon?.image
-        //starRatingView?.text = String(describing: nativeAd.starRating?.doubleValue)
-        //storeView?.text = nativeAd.store
-        //priceView?.text = nativeAd.price
         
         // Set ourselves as the native ad delegate to be notified of native ad events.
         nativeAd.delegate = self
