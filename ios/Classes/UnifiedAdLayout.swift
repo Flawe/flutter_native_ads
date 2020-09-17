@@ -97,11 +97,13 @@ extension UnifiedAdLayout : GADUnifiedNativeAdLoaderDelegate {
 
         // cta "button"
         (nativeAdView.callToActionView as? UILabel)?.text = nativeAd.callToAction
-        (nativeAdView.callToActionView as? UILabel)?.layer.borderWidth = 1.0
-        (nativeAdView.callToActionView as? UILabel)?.layer.borderColor = UIColor.gray.cgColor
-        (nativeAdView.callToActionView as? UILabel)?.layer.cornerRadius = 5.0
         (nativeAdView.callToActionView as? UILabel)?.text = nativeAd.callToAction
         nativeAdView.callToActionView?.isHidden = nativeAd.callToAction == nil
+        if nativeAd.callToAction != nil {
+            (nativeAdView.callToActionView as? UILabel)?.layer.borderWidth = 1.0
+            (nativeAdView.callToActionView as? UILabel)?.layer.borderColor = UIColor.gray.cgColor
+            (nativeAdView.callToActionView as? UILabel)?.layer.cornerRadius = 5.0
+        }
 
         // Associate the native ad view with the native ad object. This is
         // required to make the ad clickable.
