@@ -83,6 +83,10 @@ extension UnifiedAdLayout : GADUnifiedNativeAdLoaderDelegate {
 
         // show images/videos
         nativeAdView.mediaView?.mediaContent = nativeAd.mediaContent
+
+        // icon
+        (nativeAdView.iconView as? UIImageView)?.image = nativeAd.icon?.image
+        nativeAdView.iconView?.isHidden = nativeAd.icon == nil
         
         // headline is always present
         (nativeAdView.headlineView as? UILabel)?.text = nativeAd.headline
