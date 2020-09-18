@@ -30,7 +30,6 @@ class UnifiedAdLayout(
     private val unifiedNativeAdView: UnifiedNativeAdView = View.inflate(context, layoutRes, null) as UnifiedNativeAdView
     private val headlineView: TextView = unifiedNativeAdView.findViewById(context.resources.getIdentifier("headline", "id", hostPackageName))
     private val bodyView: TextView = unifiedNativeAdView.findViewById(context.resources.getIdentifier("body", "id", hostPackageName))
-    private val ctaView: TextView = unifiedNativeAdView.findViewById(context.resources.getIdentifier("cta", "id", hostPackageName))
 
     private val iconView: ImageView? = unifiedNativeAdView.findViewById(context.resources.getIdentifier("icon", "id", hostPackageName))
     private val advertiserView: TextView? = unifiedNativeAdView.findViewById(context.resources.getIdentifier("advertiser", "id", hostPackageName))
@@ -39,8 +38,6 @@ class UnifiedAdLayout(
     private var ad: UnifiedNativeAd? = null
 
     init {
-        ctaView.setAlpha(0.0f)
-
         val ids = arguments["test_devices"] as MutableList<String>?
         val configuration = RequestConfiguration.Builder().setTestDeviceIds(ids).build()
         MobileAds.setRequestConfiguration(configuration)
@@ -102,15 +99,12 @@ class UnifiedAdLayout(
     private fun ensureUnifiedAd(ad: UnifiedNativeAd?) {
         headlineView.text = ad?.headline
         bodyView.text = ad?.body
-        ctaView.text = ad?.callToAction
-        ctaView.setAlpha(1.0f)
 
         iconView?.setImageDrawable(ad?.icon?.drawable)
         advertiserView?.text = ad?.advertiser
 
         unifiedNativeAdView.bodyView = bodyView
         unifiedNativeAdView.headlineView = headlineView
-        unifiedNativeAdView.callToActionView = ctaView
 
         unifiedNativeAdView.iconView = iconView
         unifiedNativeAdView.advertiserView = advertiserView
